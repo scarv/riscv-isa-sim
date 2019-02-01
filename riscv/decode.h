@@ -23,9 +23,11 @@
 
 typedef int64_t sreg_t;
 typedef uint64_t reg_t;
+typedef uint32_t xcr_reg_t; // XCrypto registers always 32-bits long.
 
 const int NXPR = 32;
 const int NFPR = 32;
+const int NXCR = 16;        // Number of XCrypto registers
 const int NCSR = 4096;
 
 #define X_RA 1
@@ -82,6 +84,13 @@ public:
   uint64_t rs3() { return x(27, 5); }
   uint64_t rm() { return x(12, 3); }
   uint64_t csr() { return x(20, 12); }
+
+  uint32_t xcrs1() {return x(18,15);}           // XCrypto source register 1
+  uint32_t xcrs2() {return x(23,20);}           // XCrypto source register 2
+  uint32_t xcrs3() {return x(27,24);}           // XCrypto source register 3
+  uint32_t xcrd () {return x(10, 7);}           // XCrypto destination register
+  uint32_t xcrd1() {return (x(9, 7) << 1) | 0;} // XC double word dest 1
+  uint32_t xcrd2() {return (x(9, 7) << 1) | 1;} // XC double word dest 2
 
   int64_t rvc_imm() { return x(2, 5) + (xs(12, 1) << 5); }
   int64_t rvc_zimm() { return x(2, 5) + (x(12, 1) << 5); }
