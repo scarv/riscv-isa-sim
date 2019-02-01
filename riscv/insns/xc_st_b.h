@@ -1,3 +1,4 @@
+require_extension('x');
 
 uint64_t addr       = RS1 + insn.xcimm_st();
 uint8_t  src_byte   = (insn.xc_cc() << 1) | insn.xc_cd();

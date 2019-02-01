@@ -1,3 +1,5 @@
+require_extension('x');
+
 
 uint32_t loaded_data = MMU.load_uint8(RS1 + insn.xcimm_ld());
 uint8_t  tgt_byte    = (insn.xc_cc() << 1) | insn.xc_cd();

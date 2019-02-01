@@ -1,3 +1,4 @@
+require_extension('x');
 
 uint32_t loaded_data = MMU.load_uint16(RS1 + insn.xcimm_ld());
 uint8_t  tgt_hw      = insn.xc_cc();
