@@ -290,6 +290,13 @@ riscv_insn_list = \
 	wfi \
 	xor \
 	xori \
+    xc_cmov_f \
+    xc_cmov_t \
+    xc_gpr2xcr \
+    xc_ld_bu \
+    xc_ld_hu \
+    xc_ld_w \
+    xc_xcr2gpr
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))

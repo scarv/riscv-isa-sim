@@ -85,6 +85,13 @@ public:
   uint64_t rm() { return x(12, 3); }
   uint64_t csr() { return x(20, 12); }
 
+  uint32_t xcimm_ld() {return xs(31,21);}
+
+  uint32_t xc_ca() {return x(24,24);}
+  uint32_t xc_cd() {return x(20,20);}
+  uint32_t xc_cb() {return x(19,19);}
+  uint32_t xc_cc() {return x(11,11);}
+
   uint32_t xcrs1() {return x(18,15);}           // XCrypto source register 1
   uint32_t xcrs2() {return x(23,20);}           // XCrypto source register 2
   uint32_t xcrs3() {return x(27,24);}           // XCrypto source register 3
@@ -142,6 +149,10 @@ private:
 #define RS1 READ_REG(insn.rs1())
 #define RS2 READ_REG(insn.rs2())
 #define WRITE_RD(value) WRITE_REG(insn.rd(), value)
+
+#define XCRS1 (STATE.XCR[insn.xcrs1()])
+#define XCRS2 (STATE.XCR[insn.xcrs2()])
+#define WRITE_XCRD(value) (STATE.XCR.write(insn.xcrd(), value))
 
 #ifndef RISCV_ENABLE_COMMITLOG
 # define WRITE_REG(reg, value) STATE.XPR.write(reg, value)

@@ -1,3 +1,3 @@
 
 // XCR[xcrd] <- GPR[RS1]
-STATE -> XCR[insn.xcrd()] = RS1;
+WRITE_XCRD(RS1);
