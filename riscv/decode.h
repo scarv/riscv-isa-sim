@@ -85,19 +85,19 @@ public:
   uint64_t rm() { return x(12, 3); }
   uint64_t csr() { return x(20, 12); }
 
-  uint32_t xcimm_ld() {return xs(31,21);}
+  uint32_t xcimm_ld() {return xs(21, 11);}
+  uint32_t xcimm_st() { return x(7, 4) + (xs(25, 7) << 5); }
+  uint32_t xc_ca() {return x(24,1);}
+  uint32_t xc_cd() {return x(20,1);}
+  uint32_t xc_cb() {return x(19,1);}
+  uint32_t xc_cc() {return x(11,1);}
 
-  uint32_t xc_ca() {return x(24,24);}
-  uint32_t xc_cd() {return x(20,20);}
-  uint32_t xc_cb() {return x(19,19);}
-  uint32_t xc_cc() {return x(11,11);}
-
-  uint32_t xcrs1() {return x(18,15);}           // XCrypto source register 1
-  uint32_t xcrs2() {return x(23,20);}           // XCrypto source register 2
-  uint32_t xcrs3() {return x(27,24);}           // XCrypto source register 3
-  uint32_t xcrd () {return x(10, 7);}           // XCrypto destination register
-  uint32_t xcrd1() {return (x(9, 7) << 1) | 0;} // XC double word dest 1
-  uint32_t xcrd2() {return (x(9, 7) << 1) | 1;} // XC double word dest 2
+  uint32_t xcrs1() {return x(15, 4);}          // XCrypto source register 1
+  uint32_t xcrs2() {return x(20, 4);}          // XCrypto source register 2
+  uint32_t xcrs3() {return x(24, 4);}          // XCrypto source register 3
+  uint32_t xcrd () {return x( 7, 3);}          // XCrypto destination register
+  uint32_t xcrd1() {return (x(7,2) << 1) | 0;} // XC double word dest 1
+  uint32_t xcrd2() {return (x(7,2) << 1) | 1;} // XC double word dest 2
 
   int64_t rvc_imm() { return x(2, 5) + (xs(12, 1) << 5); }
   int64_t rvc_zimm() { return x(2, 5) + (x(12, 1) << 5); }

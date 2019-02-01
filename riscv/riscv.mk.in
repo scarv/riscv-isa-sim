@@ -293,10 +293,13 @@ riscv_insn_list = \
     xc_cmov_f \
     xc_cmov_t \
     xc_gpr2xcr \
+    xc_xcr2gpr \
     xc_ld_bu \
     xc_ld_hu \
     xc_ld_w \
-    xc_xcr2gpr
+    xc_st_b \
+    xc_st_h \
+    xc_st_w
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))
