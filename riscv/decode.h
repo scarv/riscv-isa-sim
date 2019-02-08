@@ -92,12 +92,15 @@ public:
   uint32_t xc_rtamt()  {return x(25,4); }
   uint32_t xc_cshamt() {return x(20,4); }
   uint32_t xc_cshamt5(){return x(20,4) | (xc_ca() << 5); }
+  uint32_t xc_cmshamt() {return x(24,6); }
   uint32_t xc_cs() {return x(28,4);}
   uint32_t xc_cl() {return x(24,4);}
+  
   uint32_t xc_ca() {return x(24,1);}
   uint32_t xc_cd() {return x(20,1);}
   uint32_t xc_cb() {return x(19,1);}
   uint32_t xc_cc() {return x(11,1);}
+
   uint32_t xc_b0() {return x(30,2);}
   uint32_t xc_b1() {return x(28,2);}
   uint32_t xc_b2() {return x(26,2);}
@@ -171,7 +174,13 @@ private:
 #define XCRS2 (STATE.XCR[insn.xcrs2()])
 #define XCRS3 (STATE.XCR[insn.xcrs3()])
 #define XCRD  (STATE.XCR[insn.xcrd()])
+#define XCRDM (((uint64_t)STATE.XCR[insn.xcrd1()])          | \
+              (((uint64_t)STATE.XCR[insn.xcrd2()]) << 32 ))
 #define WRITE_XCRD(value) (STATE.XCR.write(insn.xcrd(), value))
+#define WRITE_XCRDM(value) { \
+        STATE.XCR.write(insn.xcrd1(), (value >>  0) & 0xFFFFFFFF); \
+        STATE.XCR.write(insn.xcrd2(), (value >> 32) & 0xFFFFFFFF); \
+    }
 
 #ifndef RISCV_ENABLE_COMMITLOG
 # define WRITE_REG(reg, value) STATE.XPR.write(reg, value)

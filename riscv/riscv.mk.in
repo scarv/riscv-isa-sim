@@ -331,7 +331,22 @@ riscv_insn_list = \
     xc_pperm_b0 \
     xc_pperm_b1 \
     xc_pperm_b2 \
-    xc_pperm_b3 
+    xc_pperm_b3 \
+    xc_macc_1 \
+    xc_macc_2 \
+    xc_madd_2 \
+    xc_madd_3 \
+    xc_mclmul_3 \
+    xc_mequ \
+    xc_mgte \
+    xc_mlte \
+    xc_mmul_3 \
+    xc_msll \
+    xc_msll_i \
+    xc_msrl \
+    xc_msrl_i \
+    xc_msub_2 \
+    xc_msub_3 
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))
