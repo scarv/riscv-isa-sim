@@ -312,7 +312,26 @@ riscv_insn_list = \
     xc_bop \
     xc_mix_l \
     xc_mix_h \
-    xc_lut
+    xc_lut \
+    xc_padd \
+    xc_psub \
+    xc_pmul_l \
+    xc_pmul_h \
+    xc_pclmul_l \
+    xc_pclmul_h \
+    xc_psll \
+    xc_psll_i \
+    xc_psrl \
+    xc_psrl_i \
+    xc_prot \
+    xc_prot_i \
+    xc_pperm_w \
+    xc_pperm_h0 \
+    xc_pperm_h1 \
+    xc_pperm_b0 \
+    xc_pperm_b1 \
+    xc_pperm_b2 \
+    xc_pperm_b3 
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))

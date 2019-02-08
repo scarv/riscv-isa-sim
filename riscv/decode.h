@@ -90,12 +90,24 @@ public:
   uint32_t xcimm_st()  {return x(7, 4) + (xs(25, 7) << 5); }
   uint32_t xc_lut8 ()  {return x(24,8); }
   uint32_t xc_rtamt()  {return x(25,4); }
+  uint32_t xc_cshamt() {return x(20,4); }
+  uint32_t xc_cshamt5(){return x(20,4) | (xc_ca() << 5); }
   uint32_t xc_cs() {return x(28,4);}
   uint32_t xc_cl() {return x(24,4);}
   uint32_t xc_ca() {return x(24,1);}
   uint32_t xc_cd() {return x(20,1);}
   uint32_t xc_cb() {return x(19,1);}
   uint32_t xc_cc() {return x(11,1);}
+  uint32_t xc_b0() {return x(30,2);}
+  uint32_t xc_b1() {return x(28,2);}
+  uint32_t xc_b2() {return x(26,2);}
+  uint32_t xc_b3() {return x(24,2);}
+
+  uint32_t xc_pack_width() {
+        return (xc_ca() << 2) |
+               (xc_cb() << 2) |
+               (xc_cc() << 2) ;
+  }
 
   uint32_t xcrs1() {return x(15, 4);}          // XCrypto source register 1
   uint32_t xcrs2() {return x(20, 4);}          // XCrypto source register 2
