@@ -157,6 +157,7 @@ private:
 
 #define XCRS1 (STATE.XCR[insn.xcrs1()])
 #define XCRS2 (STATE.XCR[insn.xcrs2()])
+#define XCRS3 (STATE.XCR[insn.xcrs3()])
 #define XCRD  (STATE.XCR[insn.xcrd()])
 #define WRITE_XCRD(value) (STATE.XCR.write(insn.xcrd(), value))
 
