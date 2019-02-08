@@ -306,7 +306,12 @@ riscv_insn_list = \
     xc_scatter_b \
     xc_scatter_h \
     xc_gather_b \
-    xc_gather_h
+    xc_gather_h \
+    xc_ld_liu \
+    xc_ld_hiu \
+    xc_bop \
+    xc_mix_l \
+    xc_mix_h 
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))
