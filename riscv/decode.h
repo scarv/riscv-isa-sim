@@ -152,6 +152,7 @@ private:
 
 #define XCRS1 (STATE.XCR[insn.xcrs1()])
 #define XCRS2 (STATE.XCR[insn.xcrs2()])
+#define XCRD  (STATE.XCR[insn.xcrd()])
 #define WRITE_XCRD(value) (STATE.XCR.write(insn.xcrd(), value))
 
 #ifndef RISCV_ENABLE_COMMITLOG
