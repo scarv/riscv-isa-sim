@@ -13,9 +13,9 @@ uint32_t result     = 0;
 
 for(uint32_t i = 0; i < n; i ++) {
 
-    uint32_t lhs    = (XCRS1 >> (i*w)) & mask;
-    uint32_t rhs    = (XCRS2 >> (i*w)) & mask;
-    uint32_t pr     = (XC_CARRYLESS_MUL(lhs,rhs) >> w) & mask;
+    uint64_t lhs    = (XCRS1 >> (i*w)) & mask;
+    uint64_t rhs    = (XCRS2 >> (i*w)) & mask;
+    uint64_t pr     = (XC_CARRYLESS_MUL(lhs,rhs) >> w) & mask;
     
     result         |= pr << (i*w);
 }
