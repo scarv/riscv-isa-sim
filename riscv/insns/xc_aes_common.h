@@ -93,3 +93,12 @@ uint8_t AES_DEC_SBOX[] = {
     b2 = AES_DEC_SBOX[b2]; \
     b3 = AES_DEC_SBOX[b3]; \
 
+#define AES_XTIME(a) \
+    ((a << 1) ^ ((a&0x80) ? 0x1b : 0))
+
+#define AES_GFMUL(a,b) (\
+    ((b & 0x1) * a) ^ \
+    ((b & 0x2) * AES_XTIME(a)) ^ \
+    ((b & 0x4) * AES_XTIME(AES_XTIME(a))) ^ \
+    ((b & 0x8) * AES_XTIME(AES_XTIME(AES_XTIME(a)))) ) 
+
