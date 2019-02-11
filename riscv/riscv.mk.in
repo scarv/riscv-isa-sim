@@ -346,7 +346,11 @@ riscv_insn_list = \
     xc_msrl \
     xc_msrl_i \
     xc_msub_2 \
-    xc_msub_3 
+    xc_msub_3  \
+    xc_aessub_enc \
+    xc_aessub_encrot \
+    xc_aessub_dec \
+    xc_aessub_decrot
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))
