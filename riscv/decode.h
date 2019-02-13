@@ -115,9 +115,9 @@ public:
   uint32_t xcrs1() {return x(15, 4);}          // XCrypto source register 1
   uint32_t xcrs2() {return x(20, 4);}          // XCrypto source register 2
   uint32_t xcrs3() {return x(24, 4);}          // XCrypto source register 3
-  uint32_t xcrd () {return x( 7, 3);}          // XCrypto destination register
-  uint32_t xcrd1() {return (x(7,2) << 1) | 0;} // XC double word dest 1
-  uint32_t xcrd2() {return (x(7,2) << 1) | 1;} // XC double word dest 2
+  uint32_t xcrd () {return x( 7, 4);}          // XCrypto destination register
+  uint32_t xcrd1() {return (x(7,3) << 1) | 0;} // XC double word dest 1
+  uint32_t xcrd2() {return (x(7,3) << 1) | 1;} // XC double word dest 2
 
   int64_t rvc_imm() { return x(2, 5) + (xs(12, 1) << 5); }
   int64_t rvc_zimm() { return x(2, 5) + (x(12, 1) << 5); }
@@ -173,6 +173,9 @@ private:
 #define XCRS1 (STATE.XCR[insn.xcrs1()])
 #define XCRS2 (STATE.XCR[insn.xcrs2()])
 #define XCRS3 (STATE.XCR[insn.xcrs3()])
+#define XCRS1_64 ((uint64_t)STATE.XCR[insn.xcrs1()])
+#define XCRS2_64 ((uint64_t)STATE.XCR[insn.xcrs2()])
+#define XCRS3_64 ((uint64_t)STATE.XCR[insn.xcrs3()])
 #define XCRD  (STATE.XCR[insn.xcrd()])
 #define XCRDM (((uint64_t)STATE.XCR[insn.xcrd1()])          | \
               (((uint64_t)STATE.XCR[insn.xcrd2()]) << 32 ))
