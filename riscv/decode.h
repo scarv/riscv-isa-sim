@@ -108,8 +108,8 @@ public:
 
   uint32_t xc_pack_width() {
         return (xc_ca() << 2) |
-               (xc_cb() << 2) |
-               (xc_cc() << 2) ;
+               (xc_cb() << 1) |
+               (xc_cc() << 0) ;
   }
 
   uint32_t xcrs1() {return x(15, 4);}          // XCrypto source register 1
