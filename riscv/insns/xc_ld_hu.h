@@ -1,6 +1,7 @@
 require_extension('x');
 
-uint32_t loaded_data = MMU.load_uint16(RS1 + insn.xcimm_ld());
+uint64_t address     = RS1 + insn.xcimm_ld();
+uint32_t loaded_data = MMU.load_uint16(address) & 0x0000FFFF;
 uint8_t  tgt_hw      = insn.xc_cc();
 
 xcr_reg_t dst_value = STATE.XCR[insn.xcrd()];
@@ -21,3 +22,4 @@ if(tgt_hw == 0) {
 
     WRITE_XCRD(dst_value);
 }
+

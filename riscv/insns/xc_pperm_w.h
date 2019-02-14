@@ -7,10 +7,10 @@ uint8_t  b1         = insn.xc_b1();
 uint8_t  b2         = insn.xc_b2();
 uint8_t  b3         = insn.xc_b3();
 
-uint32_t p0         = (XCRS1 >> (b0*4)) & 0xFF;
-uint32_t p1         = (XCRS1 >> (b1*4)) & 0xFF;
-uint32_t p2         = (XCRS1 >> (b2*4)) & 0xFF;
-uint32_t p3         = (XCRS1 >> (b3*4)) & 0xFF;
+uint32_t p0         = (XCRS1 >> (b0*8)) & 0xFF;
+uint32_t p1         = (XCRS1 >> (b1*8)) & 0xFF;
+uint32_t p2         = (XCRS1 >> (b2*8)) & 0xFF;
+uint32_t p3         = (XCRS1 >> (b3*8)) & 0xFF;
 
 uint32_t result     = (p3 << 24) |
                       (p2 << 16) |

@@ -10,12 +10,13 @@ uint32_t mask       = 0;
 XC_DECODE_PACK_WIDTHS(pack_width, w, n, mask);
 
 uint32_t result     = 0;
+uint32_t rtamt      = w == 32 ? insn.xc_cshamt5() : insn.xc_cshamt();
 
 for(uint32_t i = 0; i < n; i ++) {
 
     uint64_t lhs    =  ((XCRS1 >> (i*w)) & mask)        | 
                       (((XCRS1 >> (i*w)) & mask) << w)  ;
-    uint32_t rhs    = w == 32 ? insn.xc_cshamt5() : insn.xc_cshamt();
+    uint32_t rhs    = rtamt;
     uint32_t pr     = (lhs   >> rhs) & mask;
     
     result         |= pr << (i*w);
