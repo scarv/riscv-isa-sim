@@ -11,4 +11,3 @@ AES_SBOX(b0, b1, b2, b3);
 uint32_t result = AES_PACK_BYTES(b3, b0, b1, b2);
 
 WRITE_XCRD(result);
-

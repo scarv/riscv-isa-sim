@@ -87,11 +87,11 @@ public:
 
   uint32_t xc_imm16z() {return xs(15,5) | (xs(21, 11) << 5);}
   uint32_t xcimm_ld()  {return xs(21, 11);}
-  uint32_t xcimm_st()  {return x(7, 4) + (xs(25, 7) << 5); }
+  uint32_t xcimm_st()  {return x(7, 4) + (xs(25, 7) << 4); }
   uint32_t xc_lut8 ()  {return x(24,8); }
   uint32_t xc_rtamt()  {return x(25,4); }
   uint32_t xc_cshamt() {return x(20,4); }
-  uint32_t xc_cshamt5(){return x(20,4) | (xc_ca() << 5); }
+  uint32_t xc_cshamt5(){return x(20,4) | (xc_ca() << 4); }
   uint32_t xc_cmshamt() {return x(24,6); }
   uint32_t xc_cs() {return x(28,4);}
   uint32_t xc_cl() {return x(24,4);}

@@ -17,3 +17,4 @@ r3 = AES_GFMUL(b0,3) ^ AES_GFMUL(b1,1) ^ AES_GFMUL(b2,1) ^ AES_GFMUL(b3,2);
 uint32_t result = AES_PACK_BYTES(r0, r1, r2, r3);
 
 WRITE_XCRD(result);
+

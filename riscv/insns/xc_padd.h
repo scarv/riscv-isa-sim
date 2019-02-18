@@ -11,6 +11,9 @@ XC_DECODE_PACK_WIDTHS(pack_width, w, n, mask);
 
 uint32_t result     = 0;
 
+uint32_t l = XCRS1;
+uint32_t r = XCRS2;
+
 for(uint32_t i = 0; i < n; i ++) {
 
     uint32_t lhs    = (XCRS1 >> (i*w)) & mask;
@@ -21,4 +24,7 @@ for(uint32_t i = 0; i < n; i ++) {
 }
 
 WRITE_XCRD(result);
+
+//printf("# xc.padd (%d,%d) %d, 0x%08X, 0x%08X = 0x%08X\n",
+//    w,pack_width,insn.xcrd(),l,r, result);
 
