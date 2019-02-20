@@ -1,9 +1,9 @@
 require_extension('x');
 
-uint8_t ab0     = (XCRS1 >>  0) & 0xFF;
-uint8_t ab1     = (XCRS1 >>  8) & 0xFF;
-uint8_t ab2     = (XCRS1 >> 16) & 0xFF;
-uint8_t ab3     = (XCRS1 >> 24) & 0xFF;
+uint8_t ab0     = (XCRS2 >>  0) & 0xFF;
+uint8_t ab1     = (XCRS2 >>  8) & 0xFF;
+uint8_t ab2     = (XCRS2 >> 16) & 0xFF;
+uint8_t ab3     = (XCRS2 >> 24) & 0xFF;
 
 uint8_t db0     = (XCRD >>  0) & 0xFF;
 uint8_t db1     = (XCRD >>  8) & 0xFF;

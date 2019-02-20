@@ -1,7 +1,7 @@
 require_extension('x');
 
-uint16_t ab0    = (XCRS1 >>  0) & 0xFFFF;
-uint16_t ab1    = (XCRS1 >> 16) & 0xFFFF;
+uint16_t ab0    = (XCRS2 >>  0) & 0xFFFF;
+uint16_t ab1    = (XCRS2 >> 16) & 0xFFFF;
 
 reg_t   addr_0  = RS1 + ab0;
 reg_t   addr_1  = RS1 + ab1;

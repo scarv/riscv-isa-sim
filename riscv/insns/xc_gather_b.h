@@ -1,9 +1,9 @@
 require_extension('x');
 
-uint8_t ab0     = (XCRS1 >>  0) & 0xFF;
-uint8_t ab1     = (XCRS1 >>  8) & 0xFF;
-uint8_t ab2     = (XCRS1 >> 16) & 0xFF;
-uint8_t ab3     = (XCRS1 >> 24) & 0xFF;
+uint32_t ab0     = (XCRS2 >>  0) & 0xFF;
+uint32_t ab1     = (XCRS2 >>  8) & 0xFF;
+uint32_t ab2     = (XCRS2 >> 16) & 0xFF;
+uint32_t ab3     = (XCRS2 >> 24) & 0xFF;
 
 reg_t   addr_0  = RS1 + ab0;
 reg_t   addr_1  = RS1 + ab1;
@@ -19,6 +19,10 @@ uint32_t wdata  = (lb3 << 24) |
                   (lb2 << 16) |
                   (lb1 <<  8) |
                   (lb0 <<  0) ;
+
+//printf("# xc.gather.b 0x%08X[%d,%d,%d,%d] = 0x%08X\n",
+//    RS1, ab0, ab1, ab2, ab3, wdata);
+//fflush(stdout);
 
 WRITE_XCRD(wdata);
 
