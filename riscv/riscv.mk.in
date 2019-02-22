@@ -325,6 +325,12 @@ riscv_insn_list = \
     xc_psrl_i \
     xc_prot \
     xc_prot_i \
+    xc_ldr_bu \
+    xc_ldr_hu \
+    xc_ldr_w \
+    xc_str_b \
+    xc_str_h \
+    xc_str_w \
     xc_pperm_w \
     xc_pperm_h0 \
     xc_pperm_h1 \
