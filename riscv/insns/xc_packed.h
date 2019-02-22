@@ -9,6 +9,7 @@ packed operations.
 
 #define XC_DECODE_PACK_WIDTHS(pack_width, w, n, mask)  \
     if(pack_width == 0 || pack_width == 4) { \
+        pack_width = 0;\
         w = 32; \
         n =  1; \
         mask = 0xFFFFFFFF; \

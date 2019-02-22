@@ -1,7 +1,7 @@
 require_extension('x');
 
-uint16_t ab0     = (XCRS1 >>  0) & 0xFFFF;
-uint16_t ab1     = (XCRS1 >> 16) & 0xFFFF;
+uint16_t ab0     = (XCRS2 >>  0) & 0xFFFF;
+uint16_t ab1     = (XCRS2 >> 16) & 0xFFFF;
 
 uint16_t db0     = (XCRD  >>  0) & 0xFFFF;
 uint16_t db1     = (XCRD  >> 16) & 0xFFFF;

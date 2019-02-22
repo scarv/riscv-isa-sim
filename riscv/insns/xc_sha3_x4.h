@@ -9,5 +9,3 @@ uint32_t result = (((x+4)%5) + 5*((y)%5)) << shamt;
 
 WRITE_RD(result);
 
-
-

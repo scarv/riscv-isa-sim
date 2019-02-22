@@ -190,6 +190,10 @@ public:
   }
   extension_t* get_extension() { return ext; }
   bool supports_extension(unsigned char ext) {
+    if(ext == 'x') {
+        // Yes, we do support XCrypto.
+        return true;
+    }
     if (ext >= 'a' && ext <= 'z') ext += 'A' - 'a';
     return ext >= 'A' && ext <= 'Z' && ((state.misa >> (ext - 'A')) & 1);
   }
