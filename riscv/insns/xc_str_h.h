@@ -9,4 +9,4 @@ if(src_byte != 0 && src_byte != 2) {
 
 uint16_t data       = (XCRD  >> (8 * src_byte)) & 0x0000FFFF;
 
-MMU.store_uint32(addr, data);
+MMU.store_uint16(addr, data);
