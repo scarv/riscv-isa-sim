@@ -367,9 +367,9 @@
 #define MATCH_XC_PPERM_B3 0xf0282b
 #define MASK_XC_PPERM_B3  0xf8787f
 #define MATCH_XC_INS 0x18282b
-#define MASK_XC_INS  0xf8787f
+#define MASK_XC_INS  0x38787f
 #define MATCH_XC_EXT 0x38282b
-#define MASK_XC_EXT  0xf8787f
+#define MASK_XC_EXT  0x38787f
 #define MATCH_XC_ST_B 0x402b
 #define MASK_XC_ST_B  0x707f
 #define MATCH_XC_ST_H 0x502b

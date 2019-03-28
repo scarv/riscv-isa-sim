@@ -93,8 +93,8 @@ public:
   uint32_t xc_cshamt() {return x(20,4); }
   uint32_t xc_cshamt5(){return x(20,4) | (xc_ca() << 4); }
   uint32_t xc_cmshamt() {return x(24,6); }
-  uint32_t xc_cs() {return x(28,4);}
-  uint32_t xc_cl() {return x(24,4);}
+  uint32_t xc_cs() {return x(27,5);}
+  uint32_t xc_cl() {return x(22,5);}
   
   uint32_t xc_ca() {return x(24,1);}
   uint32_t xc_cd() {return x(20,1);}
