@@ -310,8 +310,6 @@ riscv_insn_list = \
     xc_ld_liu \
     xc_ld_hiu \
     xc_bop \
-    xc_mix_l \
-    xc_mix_h \
     xc_lut \
     xc_padd \
     xc_psub \
