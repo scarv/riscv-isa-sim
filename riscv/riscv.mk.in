@@ -336,6 +336,8 @@ riscv_insn_list = \
     xc_pperm_b1 \
     xc_pperm_b2 \
     xc_pperm_b3 \
+    xc_ins \
+    xc_ext \
     xc_macc_1 \
     xc_macc_2 \
     xc_madd_2 \
