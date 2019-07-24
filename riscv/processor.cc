@@ -127,7 +127,7 @@ void processor_t::parse_isa_string(const char* str)
     lowercase += std::tolower(*r);
 
   const char* p = lowercase.c_str();
-  const char* all_subsets = "imafdqc"
+  const char* all_subsets = "imafdqcx"
 #ifdef __SIZEOF_INT128__
     "v"
 #endif
@@ -166,7 +166,13 @@ void processor_t::parse_isa_string(const char* str)
       const char* ext = p+1, *end = ext;
       while (islower(*end))
         end++;
-      register_extension(find_extension(std::string(ext, end - ext).c_str())());
+
+      //
+      // Don't register the 'x' extension as it is built into Spike.
+      // TODO: Re-integrate the XCrypto extension using Spike's
+      //       (undocumented?!) library loading mechanism.
+      //
+      //register_extension(find_extension(std::string(ext, end - ext).c_str())());
       p = end;
     } else {
       bad_isa_string(str);

@@ -661,6 +661,79 @@ riscv_insn_priv = \
 	sret \
 	wfi \
 
+riscv_insn_ext_xcrypto = \
+    xc_aesmix_dec \
+    xc_aesmix_enc \
+    xc_aessub_dec \
+    xc_aessub_decrot \
+    xc_aessub_enc \
+    xc_aessub_encrot \
+    xc_bmv \
+    xc_bop \
+    xc_cmov_f \
+    xc_cmov_t \
+    xc_ext \
+    xc_gather_b \
+    xc_gather_h \
+    xc_gpr2xcr \
+    xc_init \
+    xc_ins \
+    xc_ipbit \
+    xc_ld_bu \
+    xc_ld_hiu \
+    xc_ld_hu \
+    xc_ld_liu \
+    xc_ldr_bu \
+    xc_ldr_hu \
+    xc_ldr_w \
+    xc_ld_w \
+    xc_lut \
+    xc_macc_1 \
+    xc_macc_2 \
+    xc_madd_2 \
+    xc_madd_3 \
+    xc_mclmul_3 \
+    xc_mequ \
+    xc_mgte \
+    xc_mlte \
+    xc_mmul_3 \
+    xc_msll \
+    xc_msll_i \
+    xc_msrl \
+    xc_msrl_i \
+    xc_msub_2 \
+    xc_msub_3 \
+    xc_padd \
+    xc_pbit \
+    xc_pbyte \
+    xc_pclmul_h \
+    xc_pclmul_l \
+    xc_pmul_h \
+    xc_pmul_l \
+    xc_prot \
+    xc_prot_i \
+    xc_psll \
+    xc_psll_i \
+    xc_psrl \
+    xc_psrl_i \
+    xc_psub \
+    xc_rngsamp \
+    xc_rngseed \
+    xc_rngtest \
+    xc_scatter_b \
+    xc_scatter_h \
+    xc_sha3_x1 \
+    xc_sha3_x2 \
+    xc_sha3_x4 \
+    xc_sha3_xy \
+    xc_sha3_yx \
+    xc_st_b \
+    xc_st_h \
+    xc_str_b \
+    xc_str_h \
+    xc_str_w \
+    xc_st_w \
+    xc_xcr2gpr
 
 riscv_insn_list = \
 	$(riscv_insn_ext_a) \
@@ -672,6 +745,7 @@ riscv_insn_list = \
 	$(riscv_insn_ext_q) \
 	$(if $(HAVE_INT128),$(riscv_insn_ext_v),) \
 	$(riscv_insn_priv) \
+	$(riscv_insn_ext_xcrypto) 
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))

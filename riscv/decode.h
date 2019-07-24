@@ -24,6 +24,7 @@
 
 typedef int64_t sreg_t;
 typedef uint64_t reg_t;
+typedef uint32_t xcr_reg_t; // XCrypto registers always 32-bits long.
 
 #ifdef __SIZEOF_INT128__
 typedef __int128 int128_t;
@@ -32,6 +33,7 @@ typedef unsigned __int128 uint128_t;
 
 const int NXPR = 32;
 const int NFPR = 32;
+const int NXCR = 16;        // Number of XCrypto registers
 const int NVPR = 32;
 const int NCSR = 4096;
 
@@ -96,6 +98,37 @@ public:
   uint64_t rm() { return x(12, 3); }
   uint64_t csr() { return x(20, 12); }
 
+  uint32_t xc_imm16z() {return xs(15,5) | (xs(21, 11) << 5);}
+  uint32_t xcimm_ld()  {return xs(21, 11);}
+  uint32_t xcimm_st()  {return x(7, 4) + (xs(25, 7) << 4); }
+  uint32_t xc_lut8 ()  {return x(24,8); }
+  uint32_t xc_rtamt()  {return x(25,4); }
+  uint32_t xc_cshamt() {return x(20,5); }
+  uint32_t xc_cmshamt() {return x(24,6); }
+  uint32_t xc_cs() {return x(27,5);}
+  uint32_t xc_cl() {return x(22,5);}
+  
+  uint32_t xc_ca() {return x(24,1);}
+  uint32_t xc_cd() {return x(20,1);}
+  uint32_t xc_cb() {return x(19,1);}
+  uint32_t xc_cc() {return x(11,1);}
+
+  uint32_t xc_b0() {return x(30,2);}
+  uint32_t xc_b1() {return x(28,2);}
+  uint32_t xc_b2() {return x(26,2);}
+  uint32_t xc_b3() {return x(24,2);}
+
+  uint32_t xc_pack_width() {
+        return x(29,3);
+  }
+
+  uint32_t xcrs1() {return x(15, 4);}          // XCrypto source register 1
+  uint32_t xcrs2() {return x(20, 4);}          // XCrypto source register 2
+  uint32_t xcrs3() {return x(24, 4);}          // XCrypto source register 3
+  uint32_t xcrd () {return x( 7, 4);}          // XCrypto destination register
+  uint32_t xcrd1() {return (x(7,3) << 1) | 0;} // XC double word dest 1
+  uint32_t xcrd2() {return (x(7,3) << 1) | 1;} // XC double word dest 2
+
   int64_t rvc_imm() { return x(2, 5) + (xs(12, 1) << 5); }
   int64_t rvc_zimm() { return x(2, 5) + (x(12, 1) << 5); }
   int64_t rvc_addi4spn_imm() { return (x(6, 1) << 2) + (x(5, 1) << 3) + (x(11, 2) << 4) + (x(7, 4) << 6); }
@@ -159,6 +192,21 @@ private:
 #define RS2 READ_REG(insn.rs2())
 #define RS3 READ_REG(insn.rs3())
 #define WRITE_RD(value) WRITE_REG(insn.rd(), value)
+
+#define XCRS1 (STATE.XCR[insn.xcrs1()])
+#define XCRS2 (STATE.XCR[insn.xcrs2()])
+#define XCRS3 (STATE.XCR[insn.xcrs3()])
+#define XCRS1_64 ((uint64_t)STATE.XCR[insn.xcrs1()])
+#define XCRS2_64 ((uint64_t)STATE.XCR[insn.xcrs2()])
+#define XCRS3_64 ((uint64_t)STATE.XCR[insn.xcrs3()])
+#define XCRD  (STATE.XCR[insn.xcrd()])
+#define XCRDM (((uint64_t)STATE.XCR[insn.xcrd1()])          | \
+              (((uint64_t)STATE.XCR[insn.xcrd2()]) << 32 ))
+#define WRITE_XCRD(value) (STATE.XCR.write(insn.xcrd(), value))
+#define WRITE_XCRDM(value) { \
+        STATE.XCR.write(insn.xcrd1(), (value >>  0) & 0xFFFFFFFF); \
+        STATE.XCR.write(insn.xcrd2(), (value >> 32) & 0xFFFFFFFF); \
+    }
 
 #ifndef RISCV_ENABLE_COMMITLOG
 # define WRITE_REG(reg, value) STATE.XPR.write(reg, value)
@@ -1755,6 +1803,6 @@ for (reg_t i = 0; i < vlmax; ++i) { \
 
 // Seems that 0x0 doesn't work.
 #define DEBUG_START             0x100
-#define DEBUG_END               (0x1000 - 1)
+#define DEBUG_END                 (0x1000 - 1)
 
 #endif

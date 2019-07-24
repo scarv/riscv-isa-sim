@@ -210,6 +210,9 @@ struct state_t
   regfile_t<reg_t, NXPR, true> XPR;
   regfile_t<freg_t, NFPR, false> FPR;
 
+  // XCrypto register file.
+  regfile_t<xcr_reg_t, NXCR, false> XCR;
+
   // control and status registers
   reg_t prv;    // TODO: Can this be an enum instead?
   reg_t misa;
@@ -306,6 +309,10 @@ public:
   }
   extension_t* get_extension() { return ext; }
   bool supports_extension(unsigned char ext) {
+    if(ext == 'x') {
+        // Yes, we do support XCrypto.
+        return true;
+    }
     if (ext >= 'a' && ext <= 'z') ext += 'A' - 'a';
     return ext >= 'A' && ext <= 'Z' && ((state.misa >> (ext - 'A')) & 1);
   }
