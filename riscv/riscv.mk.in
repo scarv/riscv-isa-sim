@@ -59,7 +59,62 @@ riscv_test_srcs =
 riscv_gen_hdrs = \
 	icache.h \
 	insn_list.h \
-
+ 
+riscv_insn_ext_xcrypto = \
+    xc_aesmix_dec \
+    xc_aesmix_enc \
+    xc_aessub_dec \
+    xc_aessub_decrot \
+    xc_aessub_enc \
+    xc_aessub_encrot \
+    xc_gather_b \
+    xc_gather_h \
+    xc_ldr_b \
+    xc_ldr_bu \
+    xc_ldr_d \
+    xc_ldr_h \
+    xc_ldr_hu \
+    xc_ldr_w \
+    xc_ldr_wu \
+    xc_lut \
+    xc_macc_1 \
+    xc_madd_3 \
+    xc_mmul_3 \
+    xc_msub_3 \
+    xc_padd \
+    xc_pclmul_h \
+    xc_pclmul_l \
+    xc_pmul_h \
+    xc_pmul_l \
+    xc_pror \
+    xc_pror_i \
+    xc_psll \
+    xc_psll_i \
+    xc_psrl \
+    xc_psrl_i \
+    xc_psub \
+    xc_rngsamp \
+    xc_rngseed \
+    xc_rngtest \
+    xc_scatter_b \
+    xc_scatter_h \
+    xc_sha256_s0 \
+    xc_sha256_s1 \
+    xc_sha256_s2 \
+    xc_sha256_s3 \
+    xc_sha3_x1 \
+    xc_sha3_x2 \
+    xc_sha3_x4 \
+    xc_sha3_xy \
+    xc_sha3_yx \
+    xc_sha512_s0 \
+    xc_sha512_s1 \
+    xc_sha512_s2 \
+    xc_sha512_s3 \
+    xc_str_b \
+    xc_str_d \
+    xc_str_h \
+    xc_str_w 
 
 riscv_insn_ext_i = \
 	add \
@@ -137,6 +192,97 @@ riscv_insn_ext_a = \
 	lr_w \
 	sc_d \
 	sc_w \
+
+riscv_insn_ext_b = \
+	addiwu \
+	addu_w \
+	addwu \
+	andn \
+	bdep \
+	bdepw \
+	bext \
+	bextw \
+	bmatflip \
+	bmator \
+	bmatxor \
+	clmul \
+	clmulh \
+	clmulhw \
+	clmulr \
+	clmulrw \
+	clmulw \
+	clz \
+	clzw \
+	cmix \
+	cmov \
+	crc32_b \
+	crc32_d \
+	crc32_h \
+	crc32_w \
+	crc32c_b \
+	crc32c_d \
+	crc32c_h \
+	crc32c_w \
+	ctz \
+	ctzw \
+	fsl \
+	fslw \
+	fsr \
+	fsri \
+	fsriw \
+	fsrw \
+	grev \
+	grevi \
+	greviw \
+	grevw \
+	max \
+	maxu \
+	min \
+	minu \
+	orn \
+	pack \
+	packw \
+	pcnt \
+	pcntw \
+	rol \
+	rolw \
+	ror \
+	rori \
+	roriw \
+	rorw \
+	sbclr \
+	sbclri \
+	sbclriw \
+	sbclrw \
+	sbext \
+	sbexti \
+	sbextw \
+	sbinv \
+	sbinvi \
+	sbinviw \
+	sbinvw \
+	sbset \
+	sbseti \
+	sbsetiw \
+	sbsetw \
+	shfl \
+	shfli \
+	shflw \
+	slliu_w \
+	slo \
+	sloi \
+	sloiw \
+	slow \
+	sro \
+	sroi \
+	sroiw \
+	srow \
+	subu_w \
+	subwu \
+	unshfl \
+	unshfli \
+	unshflw \
+	xnor 
 
 riscv_insn_ext_c = \
 	c_add \
@@ -664,6 +810,7 @@ riscv_insn_priv = \
 
 riscv_insn_list = \
 	$(riscv_insn_ext_a) \
+	$(riscv_insn_ext_b) \
 	$(riscv_insn_ext_c) \
 	$(riscv_insn_ext_i) \
 	$(riscv_insn_ext_m) \
@@ -672,6 +819,7 @@ riscv_insn_list = \
 	$(riscv_insn_ext_q) \
 	$(if $(HAVE_INT128),$(riscv_insn_ext_v),) \
 	$(riscv_insn_priv) \
+	$(riscv_insn_ext_xcrypto) 
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))
