@@ -96,8 +96,9 @@ public:
   uint64_t rm() { return x(12, 3); }
   uint64_t csr() { return x(20, 12); }
 
-  uint32_t xc_pack_width() {return (30,2);}
-  uint32_t xc_rdm() {return (8,4);}
+  uint32_t xc_pack_width() {return x(30,2);}
+  uint32_t xc_sha3_sh() {return x(30,2);}
+  uint32_t xc_rdm() {return x(8,4);}
 
   int64_t rvc_imm() { return x(2, 5) + (xs(12, 1) << 5); }
   int64_t rvc_zimm() { return x(2, 5) + (x(12, 1) << 5); }
