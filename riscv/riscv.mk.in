@@ -81,6 +81,7 @@ riscv_insn_ext_xcrypto = \
     xc_madd_3 \
     xc_mmul_3 \
     xc_msub_3 \
+    xc_mror \
     xc_padd \
     xc_pclmul_h \
     xc_pclmul_l \
