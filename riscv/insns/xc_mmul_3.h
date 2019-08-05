@@ -7,8 +7,11 @@ uint64_t result_hi;
 
 if(xlen == 32) {
 
-    uint64_t result = (RS1 * RS2) + RS3;
-
+    uint64_t result = ((RS1&0xFFFFFFFF) *
+                       (RS2&0xFFFFFFFF)) +
+                      (RS3&0xFFFFFFFF);
+    
+    
     result_lo       = result & 0xFFFFFFFF;
     result_hi       = result >> xlen     ;
 
