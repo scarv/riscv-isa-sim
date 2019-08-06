@@ -40,6 +40,32 @@
 #define SSTATUS_UXL         0x0000000300000000
 #define SSTATUS64_SD        0x8000000000000000
 
+#define UXCRYPTO_B1         (0xFF << 24)
+#define UXCRYPTO_B0         (0xFF << 16)
+#define UXCRYPTO_MEM        (0x1  << 10)
+#define UXCRYPTO_RNG        (0x1  <<  9)
+#define UXCRYPTO_PACK16     (0x1  <<  8)
+#define UXCRYPTO_PACK8      (0x1  <<  7)
+#define UXCRYPTO_PACK4      (0x1  <<  6)
+#define UXCRYPTO_PACK2      (0x1  <<  5)
+#define UXCRYPTO_MP         (0x1  <<  4)
+#define UXCRYPTO_SHA3       (0x1  <<  3)
+#define UXCRYPTO_SHA2       (0x1  <<  2)
+#define UXCRYPTO_AES        (0x1  <<  1)
+#define UXCRYPTO_CT         (0x1  <<  0)
+
+#define UXCRYPTO_WMASK      (UXCRYPTO_B1     | UXCRYPTO_B0   | UXCRYPTO_CT)
+#define UXCRYPTO_INIT       (UXCRYPTO_MEM    | \
+                             UXCRYPTO_RNG    | \
+                             UXCRYPTO_PACK16 | \
+                             UXCRYPTO_PACK8  | \
+                             UXCRYPTO_PACK4  | \
+                             UXCRYPTO_PACK2  | \
+                             UXCRYPTO_MP     | \
+                             UXCRYPTO_SHA3   | \
+                             UXCRYPTO_SHA2   | \
+                             UXCRYPTO_AES    )
+
 #define DCSR_XDEBUGVER      (3U<<30)
 #define DCSR_NDRESET        (1<<29)
 #define DCSR_FULLRESET      (1<<28)
@@ -572,6 +598,8 @@
 #define MASK_XC_RNGSEED 0xfff07fff
 #define MATCH_XC_LUT 0x62006033
 #define MASK_XC_LUT 0xfe00707f
+#define MATCH_XC_BOP 0x64006033
+#define MASK_XC_BOP 0x7e00707f
 #define MATCH_XC_PADD 0x2000073
 #define MASK_XC_PADD 0x3e00707f
 #define MATCH_XC_PSUB 0x4000073
@@ -1798,6 +1826,7 @@
 #define CSR_FFLAGS 0x1
 #define CSR_FRM 0x2
 #define CSR_FCSR 0x3
+#define CSR_UXCRYPTO 0x800
 #define CSR_USTATUS 0x0
 #define CSR_UIE 0x4
 #define CSR_UTVEC 0x5
@@ -2086,6 +2115,7 @@ DECLARE_INSN(xc_rngtest, MATCH_XC_RNGTEST, MASK_XC_RNGTEST)
 DECLARE_INSN(xc_rngsamp, MATCH_XC_RNGSAMP, MASK_XC_RNGSAMP)
 DECLARE_INSN(xc_rngseed, MATCH_XC_RNGSEED, MASK_XC_RNGSEED)
 DECLARE_INSN(xc_lut, MATCH_XC_LUT, MASK_XC_LUT)
+DECLARE_INSN(xc_bop, MATCH_XC_BOP, MASK_XC_BOP)
 DECLARE_INSN(xc_padd, MATCH_XC_PADD, MASK_XC_PADD)
 DECLARE_INSN(xc_psub, MATCH_XC_PSUB, MASK_XC_PSUB)
 DECLARE_INSN(xc_pror, MATCH_XC_PROR, MASK_XC_PROR)
@@ -2856,6 +2886,7 @@ DECLARE_INSN(vamomaxuq_v, MATCH_VAMOMAXUQ_V, MASK_VAMOMAXUQ_V)
 DECLARE_CSR(fflags, CSR_FFLAGS)
 DECLARE_CSR(frm, CSR_FRM)
 DECLARE_CSR(fcsr, CSR_FCSR)
+DECLARE_CSR(uxcrypto, CSR_UXCRYPTO)
 DECLARE_CSR(ustatus, CSR_USTATUS)
 DECLARE_CSR(uie, CSR_UIE)
 DECLARE_CSR(utvec, CSR_UTVEC)

@@ -232,6 +232,9 @@ struct state_t
   reg_t stvec;
   reg_t satp;
   reg_t scause;
+  
+  // XCrypto CSR
+  reg_t uxcrypto;
 
   reg_t dpc;
   reg_t dscratch0, dscratch1;

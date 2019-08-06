@@ -251,6 +251,7 @@ void processor_t::reset()
   state.dcsr.halt = halt_on_reset;
   halt_on_reset = false;
   set_csr(CSR_MSTATUS, state.mstatus);
+  set_csr(CSR_UXCRYPTO, UXCRYPTO_INIT);
   VU.reset();
 
   if (ext)
@@ -671,6 +672,11 @@ void processor_t::set_csr(int which, reg_t val)
     case CSR_VXRM:
       VU.vxrm = val;
       break;
+    case CSR_UXCRYPTO:
+      // if(!supports_extension('crypto')) break;
+      state.uxcrypto = (state.uxcrypto & ~UXCRYPTO_WMASK) |
+                       (val            &  UXCRYPTO_WMASK) ;
+      break;
   }
 }
 
@@ -865,6 +871,9 @@ reg_t processor_t::get_csr(int which)
       if (!supports_extension('V'))
         break;
       return VU.vtype;
+    case CSR_UXCRYPTO:
+      // if(!supports_extension('crypto')) break;
+      return state.uxcrypto;
   }
   throw trap_illegal_instruction(0);
 }
