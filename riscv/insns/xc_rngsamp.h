@@ -1,4 +1,3 @@
-require_extension('x');
 
 //
 // We cannot model a proper cryptographic random number generator here
@@ -17,5 +16,5 @@ require_extension('x');
 
 uint32_t sample = rand();
 
-WRITE_XCRD(sample);
+WRITE_RD(sample);
 

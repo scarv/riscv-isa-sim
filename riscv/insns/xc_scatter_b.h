@@ -1,14 +1,13 @@
-require_extension('x');
 
-uint8_t ab0     = (XCRS2 >>  0) & 0xFF;
-uint8_t ab1     = (XCRS2 >>  8) & 0xFF;
-uint8_t ab2     = (XCRS2 >> 16) & 0xFF;
-uint8_t ab3     = (XCRS2 >> 24) & 0xFF;
+uint8_t ab0     = (RS2 >>  0) & 0xFF;
+uint8_t ab1     = (RS2 >>  8) & 0xFF;
+uint8_t ab2     = (RS2 >> 16) & 0xFF;
+uint8_t ab3     = (RS2 >> 24) & 0xFF;
 
-uint8_t db0     = (XCRD >>  0) & 0xFF;
-uint8_t db1     = (XCRD >>  8) & 0xFF;
-uint8_t db2     = (XCRD >> 16) & 0xFF;
-uint8_t db3     = (XCRD >> 24) & 0xFF;
+uint8_t db0     = (RS3 >>  0) & 0xFF;
+uint8_t db1     = (RS3 >>  8) & 0xFF;
+uint8_t db2     = (RS3 >> 16) & 0xFF;
+uint8_t db3     = (RS3 >> 24) & 0xFF;
 
 reg_t   addr_0  = RS1 + ab0;
 reg_t   addr_1  = RS1 + ab1;

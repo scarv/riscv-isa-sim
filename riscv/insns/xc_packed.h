@@ -8,26 +8,21 @@ packed operations.
 #define XC_PACKED_H
 
 #define XC_DECODE_PACK_WIDTHS(pack_width, w, n, mask)  \
-    if(pack_width == 0 || pack_width == 4) { \
-        pack_width = 0;\
-        w = 32; \
-        n =  1; \
-        mask = 0xFFFFFFFF; \
-    } else if(pack_width == 1) { \
+    if(pack_width == 3) { \
         w = 16; \
-        n =  2; \
+        n =  2 * xlen/32; \
         mask = 0x0000FFFF; \
     } else if(pack_width == 2) { \
         w =  8; \
-        n =  4; \
+        n =  4 * xlen/32; \
         mask = 0x000000FF; \
-    } else if(pack_width == 3) { \
+    } else if(pack_width == 1) { \
         w =  4; \
-        n =  8; \
+        n =  8 * xlen/32; \
         mask = 0x0000000F; \
-    } else if(pack_width == 5) { \
+    } else if(pack_width == 0) { \
         w =  2; \
-        n = 16; \
+        n = 16 * xlen/32; \
         mask = 0x00000003; \
     } else { \
         throw trap_illegal_instruction(0); \

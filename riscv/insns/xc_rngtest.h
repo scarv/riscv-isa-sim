@@ -1,4 +1,3 @@
-require_extension('x');
 
 //
 // It is impossible to properly model a TRNG in software only.

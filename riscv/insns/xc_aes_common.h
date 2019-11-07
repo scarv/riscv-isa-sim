@@ -70,10 +70,10 @@ uint8_t AES_DEC_SBOX[] = {
 };
 
 #define AES_UNPACK_BYTES(b0,b1,b2,b3) \
-    uint8_t  b0 = (XCRS1 >>  0) & 0xFF; \
-    uint8_t  b1 = (XCRS2 >>  8) & 0xFF; \
-    uint8_t  b2 = (XCRS1 >> 16) & 0xFF; \
-    uint8_t  b3 = (XCRS2 >> 24) & 0xFF; \
+    uint8_t  b0 = (RS1 >>  0) & 0xFF; \
+    uint8_t  b1 = (RS2 >>  8) & 0xFF; \
+    uint8_t  b2 = (RS1 >> 16) & 0xFF; \
+    uint8_t  b3 = (RS2 >> 24) & 0xFF; \
 
 #define AES_PACK_BYTES(b0,b1,b2,b3) ( \
     (uint32_t)b0 <<  0  | \
@@ -96,9 +96,7 @@ uint8_t AES_DEC_SBOX[] = {
 #define AES_XTIME(a) \
     ((a << 1) ^ ((a&0x80) ? 0x1b : 0))
 
-#define AES_GFMUL(a,b) (\
-    ((b & 0x1) * a) ^ \
-    ((b & 0x2) * AES_XTIME(a)) ^ \
-    ((b & 0x4) * AES_XTIME(AES_XTIME(a))) ^ \
-    ((b & 0x8) * AES_XTIME(AES_XTIME(AES_XTIME(a)))) ) 
-
+#define AES_GFMUL(a,b) ( ( ( (b) & 0x1 ) ?                              (a)   : 0 ) ^ \
+                         ( ( (b) & 0x2 ) ?                     AES_XTIME(a)   : 0 ) ^ \
+                         ( ( (b) & 0x4 ) ?           AES_XTIME(AES_XTIME(a))  : 0 ) ^ \
+                         ( ( (b) & 0x8 ) ? AES_XTIME(AES_XTIME(AES_XTIME(a))) : 0 ) )

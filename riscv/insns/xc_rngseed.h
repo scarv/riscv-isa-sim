@@ -1,4 +1,3 @@
-require_extension('x');
 
 //
 // We cannot model a proper cryptographic random number generator here
@@ -15,7 +14,7 @@ require_extension('x');
 // the RNG.
 //
 
-uint32_t seed = XCRS1;
+uint32_t seed = RS1;
 
 srand(seed);
 
