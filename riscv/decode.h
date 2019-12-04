@@ -99,6 +99,8 @@ public:
   uint32_t xc_pack_width() {return x(30,2);}
   uint32_t xc_sha3_sh() {return x(30,2);}
   uint32_t xc_rdm() {return x(8,4);}
+  uint32_t xc_rsm1() {return x(16,4);}
+  uint32_t xc_rsm2() {return x(21,4);}
   uint32_t xc_l() {return x(31,1);}
 
   int64_t rvc_imm() { return x(2, 5) + (xs(12, 1) << 5); }

@@ -1,16 +1,11 @@
-int rd1 = ( insn.xc_rdm() << 1 )       ;
-int rd2 = ( insn.xc_rdm() << 1 ) | 0x1 ;
+uint32_t r_0, r_1, x_0, x_1, y_0, y_1;
 
-int rs1 = ( insn.xc_rdm() << 1 )       ;
-int rs2 = ( insn.xc_rdm() << 1 ) | 0x1 ;
-int rs3 = ( insn.xc_rdm() << 1 )       ;
-int rs4 = ( insn.xc_rdm() << 1 ) | 0x1 ;
+x_0 = READ_REG( ( insn.xc_rsm1() << 1 ) | 0x0 );
+x_1 = READ_REG( ( insn.xc_rsm1() << 1 ) | 0x1 );
+y_0 = READ_REG( ( insn.xc_rsm2() << 1 ) | 0x0 );
+y_1 = READ_REG( ( insn.xc_rsm2() << 1 ) | 0x1 );
 
-    
-uint64_t result_lo;
-uint64_t result_hi;
+BoolXOR( &r_0, &r_1, x_0, x_1, y_0, y_1 );
 
-
-
-WRITE_REG( rd1, result_lo );
-WRITE_REG( rd2, result_hi );
+WRITE_REG( ( insn.xc_rdm() << 1 ) | 0x0, r_0 );
+WRITE_REG( ( insn.xc_rdm() << 1 ) | 0x1, r_1 );
